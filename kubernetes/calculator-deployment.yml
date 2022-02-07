@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-calculator-deployment
+  labels:
+    app: go-calculator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go-calculator
+      project: tema18-devops
+  template:
+    metadata:
+      labels:
+        app: go-calculator
+        project: tema18-devops
+    spec:
+      containers:
+      - name: go-calculator
+        image: femelloffm/go-calculator:1.0
+        ports:
+        - containerPort: 8080
